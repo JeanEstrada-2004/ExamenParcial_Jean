@@ -28,9 +28,6 @@
         <label>Equipo actual</label>
         <select asp-for="Assignments" asp-items="@(new SelectList(ViewBag.Teams, "TeamId", "Name"))">
             <option disabled selected>Seleccione equipo</option>
-            <option selected>Universitario</option>
-            <option selected>Alianza Lima</option>
-            <option selected>Cristal</option>
         </select>
     </div>
 
