@@ -10,9 +10,11 @@ WORKDIR /src
 # Copiar solución completa
 COPY . .
 
+
 # Restaurar paquetes y compilar
 RUN dotnet restore "ExamenParcial_Jean.sln"
 RUN dotnet publish "ExamenParcial_Jean.csproj" -c Release -o /app/publish
+RUN dotnet ef database update --no-build
 
 # Final: Copiar la app compilada a la imagen de producción
 FROM base AS final
