@@ -1,0 +1,49 @@
+@model List<ExamenParcial_Jean.Models.Assignment>
+
+@{
+    ViewData["Title"] = "Asociar Jugador a Equipo";
+}
+
+<h2>Asociar Jugador a Equipo</h2>
+
+<form method="post" asp-action="Asociar">
+    <div>
+        <label>Jugador</label>
+        <select name="playerId">
+            @foreach (var p in ViewBag.Players)
+            {
+                <option value="@p.PlayerId">@p.Name</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Equipo</label>
+        <select name="teamId">
+            @foreach (var t in ViewBag.Teams)
+            {
+                <option value="@t.TeamId">@t.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit">Asociar</button>
+</form>
+
+<hr />
+
+<h3>Jugadores Asociados a Equipos</h3>
+
+<table border="1">
+    <tr>
+        <th>Jugador</th>
+        <th>Equipo</th>
+    </tr>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.Player.Name</td>
+            <td>@a.Team.Name</td>
+        </tr>
+    }
+</table>
